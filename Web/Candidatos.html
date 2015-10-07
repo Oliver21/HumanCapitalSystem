@@ -1,0 +1,90 @@
+<html>
+<!-- Icono de la pagina -->
+<!-- <link href="icono5.png" rel="shortcut icon"> -->
+
+<style>
+h1 {color:#ffffff; text-align:center}
+menu > a {
+text-decoration:none; 
+font-size:22pt;
+display: block-line;
+color: #ffffff;
+padding:15px;
+}
+
+table{color:#2e9afe}
+
+menu > a:hover {background-color:white; 
+	color:#006666;
+padding:15px}
+
+menu { 
+padding: 15px;
+width: 100%;
+background-color:#006666;}
+</style>
+
+<title>Candidatos</title>
+<body bgcolor=dddddd background="fondo.png">
+
+<menu>
+<!-- <img src="icono.png" width="50px" height="40px"></img> -->
+<a href ="Perfil.html">Perfil</a>
+<a href ="Candidatos.html">Candidatos</a>
+<a href ="Entrevistas.html">Entrevistas</a>
+<a href ="Empleados.html">Empleados</a>
+<a href ="Reportes.html">Reportes</a>
+<a href ="Contactanos.html">Contactanos</a>
+</menu>
+
+ <h1> Registro de Candidatos </h1>
+
+<div id="formulario">
+<table style="width:100%" >
+<form action="servidor.html">
+<tr>
+<td>
+Nombres :
+<input type="text" name="nombre" required>
+<br>
+<br>
+Direccion:
+<input type="text" name="direccion" required>
+<br>
+<br>
+Telefono:
+<input type="tel" name="telefono">
+<br>
+<br>
+Correo Electronico:
+<input type="email" name="correo" required>
+<br>
+<br>
+Titulo Profesional:
+<input type="text" name="titulo">
+</td>
+<td>
+Universidad:
+<input type="text" name="universidad">
+<br>
+<br>
+Certificados:
+<input type="text" name="certificado">
+<br>
+<br>
+Trabajos anteriores:
+<input type="text" name="trabajos" multiple>
+<br>
+<br>
+Expectativas economicas:
+<input type="text" name="economico">
+</td>
+</tr>
+</table>
+</div>
+
+<br /> 
+<br /> 
+</body>
+
+</html>
