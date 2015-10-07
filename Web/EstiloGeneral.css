@@ -1,0 +1,19 @@
+h1 {color:#ffffff; text-align:center}
+menu > a {
+text-decoration:none; 
+font-size:22pt;
+display: block-line;
+color: #ffffff;
+padding:15px;
+}
+
+table{color:#2e9afe}
+
+menu > a:hover {background-color:white; 
+	color:#006666;
+padding:15px}
+
+menu { 
+padding: 15px;
+width: 100%;
+background-color:#006666;}
