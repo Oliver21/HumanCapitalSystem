@@ -1,0 +1,1 @@
+Para hacer correr el proyecto basta con descomprimir el ZIP y abrir el proyecto en NetBeans
