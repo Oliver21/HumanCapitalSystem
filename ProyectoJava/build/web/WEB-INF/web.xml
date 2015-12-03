@@ -20,6 +20,14 @@
         <servlet-name>AgregarEmpleadoListServlet</servlet-name>
         <servlet-class>logic.AgregarEmpleadoListServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ValidateLoginServlet</servlet-name>
+        <servlet-class>logic.ValidateLoginServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RegisterCredentialsServlet</servlet-name>
+        <servlet-class>logic.RegisterCredentialsServlet</servlet-class>
+    </servlet>
     
     
     <servlet-mapping>
@@ -38,11 +46,19 @@
         <servlet-name>AgregarEmpleadoListServlet</servlet-name>
         <url-pattern>/agregarEmpleadoList</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ValidateLoginServlet</servlet-name>
+        <url-pattern>/validateLogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegisterCredentialsServlet</servlet-name>
+        <url-pattern>/registerCredentials</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>agregarEmpleados.jsp</welcome-file>
+        <welcome-file>login.jsp</welcome-file>
     </welcome-file-list>
     <error-page>
         <error-code>404</error-code>

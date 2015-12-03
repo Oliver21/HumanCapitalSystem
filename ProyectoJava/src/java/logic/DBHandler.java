@@ -238,4 +238,47 @@ public class DBHandler {
         return emp;
     }
     
+    public static boolean validarSesion(String usuario, String password){
+        boolean bSuccess = false;
+        
+        try {
+            Statement st = con.createStatement();
+            String sql = "SELECT * FROM usuarios WHERE username = '";
+            sql += usuario;
+            sql += "'";
+            ResultSet rs = st.executeQuery(sql);
+            String sPassword = "";
+
+            while (rs.next()) {
+                sPassword = rs.getString("password");
+            }
+
+            if (!sPassword.isEmpty()) {
+                if(sPassword.equals(password)){
+                    return true;
+                }
+            }
+            
+            return false;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return bSuccess;
+    }
+    
+    public static void registrarSesion(String username, String password) {
+        try {
+            Statement st = con.createStatement();
+            String sql;
+            sql = "insert into usuarios (username, password) values('";
+            sql += username + "', '" + password + "')";
+            st.executeUpdate(sql);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
 }
