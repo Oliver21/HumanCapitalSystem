@@ -23,7 +23,7 @@
 <center>
 <br><br><br>
 <h3  class="mensajeTop">Datos del Candidato</h3>
-<img  id="cuadro" src="cuadro.png" width="400px" height ="215px"></img>
+<img  id="cuadro" src="cuadro.png" ></img>
 <form action= "agregarCandidatoList" method="post"> 
 Nombre Completo:
 <input type="text" placeholder="Nombre Completo" name="nombre" required style=" background:transparent; width:300px; height:40px; font-size:18px; 
@@ -36,7 +36,7 @@ Telefono:
 <input type="tel" placeholder="Telefono" name="telefono" style=" background:transparent; width:300px; height:40px; font-size:18px; position:relative; left:53px;">
 <br> <br>
 Correo Electrónico:
-<input type="text" placeholder="Correo electronico" name="correo" style=" background:transparent; width:300px; height:40px; font-size:18px; position:relative; 
+<input type="email" placeholder="Correo electronico" name="correo" style=" background:transparent; width:300px; height:40px; font-size:18px; position:relative; 
 left:21px;">
 <br> <br>
 Titulo Profesional:

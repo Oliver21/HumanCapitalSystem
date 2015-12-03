@@ -6,89 +6,71 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<link rel="stylesheet" type="text/css" href="EstiloGeneral.css" />
+<link rel="stylesheet" type="text/css" href="EstiloAgregarEmpleados.css" />
 <html>
     <head>
         <title>Agregar empleados</title>
     </head>
-    <body>
-        <%@ include file="/menu.jsp"  %>
+    <body background="oficina2.jpg" width="100%">
         <jsp:useBean id = "datos" scope= "session" class = "logic.DBHandler" />
-        <div id="table1">
-            <!-- Titulo de la pagina -->
-            <h1 align="right">  Registro de Empleados </h1>
+<!-- Menu -->
+<a href="candidatos.jsp"><img src="add.png" id="imagen1" class="menu" width="50px" height="50px" title="AGREGAR CANDIDATO"></img></a>
+<a href="empleados.jsp"><img src="empleado.png" id="imagen2" class="menu" width="50px" height="50px" title="AGREGAR EMPLEADO" ></img></a>
+<a href="entrevistas.jsp"><img src="handshake2.png" id="imagen3" class="menu" width="50px" height="50px" title="ENTREVISTAS"></img></a>
+<a href="reportes.jsp"><img src="reporte2.png" id="imagen4" class="menu" width="50px" height="50px" title="REPORTES"></img></a>
 
             <!-- Formulario en forma de tabla para separar en columnas y renglones -->
-            <table style="width:140%" >
-
-                <form action="agregarEmpleadoList" method="post">
-                    <tr>
-                        <td align="right">
-                            Nombre completo:
-                            <input type="text" name="nombre" required style="width: 500px;">
-                            <br>
-                            <br>
-                            Domicilio:
-                            <input type="text" name="domicilio" required style="width: 500px;">
-                            <br>
-                            <br>
-                            Telefono:
-                            <input type="tel" name="telefono" style="width: 500px;">
-                            <br>
-                            <br>
-                            Correo Electronico:
-                            <input type="email" name="correo" required style="width: 500px;">
-                            <br>
-                            <br>
-                            Titulo Profesional:
-                            <input type="text" name="titulo" style="width: 500px;">
-                            <br>
-                            <br>
-                            Universidad:
-                            <input type="text" name="universidad" style="width: 500px;">
-                            <br>
-                            <br>
-                            Certificados:
-                            <input type="text" name="certificado" style="width: 500px;">
-                            <br>
-                            <br>
-                            Trabajos anteriores:
-                            <input type="text" name="trabajos" multiple style="width: 500px; height: 80px">
-                            <br>
-                            <br>
-                            Expectativas economicas:
-                            <input type="number" name="economico" style="width: 500px;" min="0" max ="99999999">
-                            <br>
-                            <br>
-                            Puesto:
-                            <input type="text" name="puesto" style="width: 500px;">
-                            <br>
-                            <br>
-                            Salario:
-                            <input type="number" name="salario" style="width: 500px;" min="0" max ="99999999">
-                            <br>
-                            <br>
-                            Dias de vacaciones:
-                            <input type="number" name="diasvacaciones" style="width: 500px;" min="0" max ="99999999">
-                            <br>
-                            <br>
-                            <input type="submit" value="Agregar">
-
-                        </td>
-
-                    </tr>
-
-                </form>
-                
-                
-                <td align="center">
-                    <br> <br>
-                    <form action="empleados.jsp">
-                        <input type="submit" value="Regresar">
-                    </form>
-                </td>
-                
-            </table>
-        </div>
+<center>
+<br><br><br>
+<h3  class="mensajeTop">Datos del Empleado</h3>
+<img  id="cuadro" src="cuadro.png"></img>
+<form action= "agregarEmpleadoList" method="post"> 
+Nombre Completo:
+<input type="text" placeholder="Nombre Completo" name="nombre" required style=" background:transparent; width:300px; height:40px; font-size:18px; 
+position:relative; left:23px;">
+<br> <br>
+Domicilio:
+<input type="text" placeholder="Domicilio" name="domicilio" style=" background:transparent; width:300px; height:40px; font-size:18px; position:relative; left:51px;">
+<br> <br>
+Telefono:
+<input type="tel" placeholder="Telefono" name="telefono" style=" background:transparent; width:300px; height:40px; font-size:18px; position:relative; left:53px;">
+<br> <br>
+Correo Electrónico:
+<input type="email" placeholder="Correo electronico" name="correo" style=" background:transparent; width:300px; height:40px; font-size:18px; position:relative; 
+left:21px;">
+<br> <br>
+Titulo Profesional:
+<input type="text" placeholder="Titutlo Profesional" name="titulo" style=" background:transparent; width:300px; height:40px; font-size:18px; position:relative; 
+left:23px;">
+<br> <br>
+Universidad:
+<input type="text" placeholder="Universidad" name="universidad" style=" background:transparent; width:300px; height:40px; font-size:18px; position:relative; 
+left:40px;">
+<br> <br>
+Certificados:
+<input type="text" placeholder="Certificados" name="certificado" style=" background:transparent; width:300px; height:40px; font-size:18px; position:relative; 
+left:40px;">
+<br> <br>
+Trabajos anteriores:
+<input type="text" placeholder="Trabajos" name="trabajos" style=" background:transparent; width:300px; height:40px; font-size:18px; position:relative; left:18px;">
+<br> <br>
+Expectativas económicas:
+<input type="number" placeholder="Salario mensual" name="economico" style=" background:transparent; width:300px; height:40px; font-size:18px;">
+<br> <br>
+Puesto en la empresa:
+<input type="text" placeholder="Puesto" name="puesto" style=" background:transparent; width:300px; height:40px; font-size:18px;">
+<br> <br>
+Salario Mensual:
+<input type="number" placeholder="Salario mensual" name="salario" style=" background:transparent; width:300px; height:40px; font-size:18px;">
+<br> <br>
+Dias de vacaciones:
+<input type="number" placeholder="Días de vacaciones" name="diasvacaciones" style=" background:transparent; width:300px; height:40px; font-size:18px;">
+<br> <br> <br> <br>
+<input type ="submit" class="myButton"value="Agregar" /> 
+</form> 
+<form action= "empleados.jsp"> 
+<input type ="submit" class="myButton" value="Regresar" /> 
+</form>
+</center>
     </body>
 </html>
