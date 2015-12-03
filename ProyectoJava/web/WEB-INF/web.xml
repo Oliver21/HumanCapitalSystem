@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <servlet>
+        <servlet-name>AgregarCandidatoListServlet</servlet-name>
+        <servlet-class>logic.AgregarCandidatoListServlet</servlet-class>
+        <init-param>
+            <param-name>relativePathToFile</param-name>
+            <param-value>/WEB-INF/CandidatoList.txt</param-value>
+        </init-param>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarCandidatoListServlet</servlet-name>
+        <servlet-class>logic.EliminarCandidatoListServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModificarCandidatoListServlet</servlet-name>
+        <servlet-class>logic.ModificarCandidatoListServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AgregarEmpleadoListServlet</servlet-name>
+        <servlet-class>logic.AgregarEmpleadoListServlet</servlet-class>
+    </servlet>
+    
+    
+    <servlet-mapping>
+        <servlet-name>AgregarCandidatoListServlet</servlet-name>
+        <url-pattern>/agregarCandidatoList</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarCandidatoListServlet</servlet-name>
+        <url-pattern>/eliminarCandidatoList</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificarCandidatoListServlet</servlet-name>
+        <url-pattern>/modificarCandidatoList</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AgregarEmpleadoListServlet</servlet-name>
+        <url-pattern>/agregarEmpleadoList</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>login.jsp</welcome-file>
+    </welcome-file-list>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/NotFound.jsp</location>
+    </error-page>
+</web-app>

@@ -1,0 +1,38 @@
+/*Atributos del titulo de la pagina*/
+h1 {color:#ffffff; text-align:right}
+#table1{ position:absolute; top:20px; left:400px}
+
+/*Atributos de los links que se encuentran en el menu de la pagina */
+menu > a {
+	text-decoration:none; 
+	font-size:22pt;
+	display: block;
+	color: #ffffff;
+	padding:15px;
+}
+
+/*Atriubutos de la tabla (formulario)*/
+table{color:#2e9afe}
+
+/*Atriubutos de los links del menu cuando el mouse esta sobre ellos */
+menu > a:hover {
+	background-color: #00BFFF;
+	color: #FFFFFF;
+	padding:15px
+}
+
+/*Atributos del menu */
+menu { 
+	padding: 15px;
+	width: 12%;
+	height: 100%;
+	background-color: #81DAF5;
+}
+
+body {
+background-repeat: no-repeat;
+-webkit-background-size: 100% 100%;
+-moz-background-size: 100% 100%;          
+-o-background-size: 100% 100%;          
+background-size: 120% 140%;
+}
