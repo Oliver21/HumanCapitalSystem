@@ -21,41 +21,36 @@
     </head>
     <body>
         <%@ include file="/menu.jsp"  %>
+        <div class="titulo">Human Capital</div><br>
         <jsp:useBean id = "datos" scope= "session" class = "logic.DBHandler" />
-        <div id="table1" >
-            <!-- Titulo de la pagina -->
-            <h1> <center> Informacion detallada de empleado </center> </h1>
-            <table style="width:140%" >
+        <div id="table2" >
+
+            <table style="width:100%" align="center" border="0" cellspacing="0" cellpadding="20">
+
+                <!-- Titulo de la pagina -->
+                <tr class="tituloCandRenglon"><td>Informacion detallada de empleado</td></tr>
 
                 <%  String sID = request.getParameter("empId");
                     Empleado emp = DBHandler.obtenerEmpleado(sID);
                     if (emp == null) {
                 %>
-                <tr> Empleado no encontrado </tr> <br><br>
+                <tr class="candRenglon">  Empleado no encontrado </tr> <br><br>
 
                 <% } else {%> 
-                <tr> Nombre: <%= emp.getsNombreCompleto()%> </tr> <br><br>
-                <tr> Domicilio: <%= emp.getsDomicilio()%> </tr><br><br>
-                <tr> Telefono: <%= emp.getsTelefono()%> </tr><br><br>
-                <tr> Correo electronico: <%= emp.getsCorreoElectronico()%> </tr><br><br>
-                <tr> Titulo profesional: <%= emp.getsTituloProfesional()%> </tr><br><br>
-                <tr> Universidad: <%= emp.getsUniversidad()%> </tr><br><br>
-                <tr> Certificados: <%= emp.getsCertificados()%> </tr><br><br>
-                <tr> Trabajos anteriores: <%= emp.getsTrabajosAnteriores()%> </tr><br><br>
-                <tr> Expectativas economicas: $<%= emp.getsExpectativas()%> </tr><br><br>
-
+                <tr class="candRenglon"> <td>Nombre: <%= emp.getsNombreCompleto()%></td> </tr>
+                <tr class="candRenglon"> <td>Domicilio: <%= emp.getsDomicilio()%> </td></tr>
+                <tr class="candRenglon"> <td>Telefono: <%= emp.getsTelefono()%> </td></tr>
+                <tr class="candRenglon"> <td>Correo electronico: <%= emp.getsCorreoElectronico()%> </td></tr>
+                <tr class="candRenglon"> <td>Titulo profesional: <%= emp.getsTituloProfesional()%> </td></tr>
+                <tr class="candRenglon"> <td>Universidad: <%= emp.getsUniversidad()%> </td></tr>
+                <tr class="candRenglon"> <td>Certificados: <%= emp.getsCertificados()%> </td></tr>
+                <tr class="candRenglon"> <td>Trabajos anteriores: <%= emp.getsTrabajosAnteriores()%> </td></tr>
+                <tr class="candRenglon"> <td>Expectativas economicas: $<%= emp.getsExpectativas()%> </td></tr>
                 <% }%>
-                <form action="/ProyectoJava/empleados.jsp">
-                    <input type="submit" value="Regresar">
-                </form>
+                <tr class="candRenglon"><td><form action="/ProyectoJava/empleados.jsp">
+                            <center><input type="submit" class="myButton" value="Regresar"></center>
+                        </form></td></tr>
             </table>
         </div>
     </body>
-    <script>
-        <%
-            if (emp == null) {
-        %>
-        alert('Advertencia: Esta intentando acceder a la informacion de un candidato inexistente.');
-        <% }%>
-    </script>
 </html>

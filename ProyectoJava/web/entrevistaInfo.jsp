@@ -18,16 +18,18 @@
 <link rel="stylesheet" type="text/css" href="EstiloGeneral.css" />
 <html>
     <head>
-        <title>Empleados</title>
+        <title>Entrevistas</title>
     </head>
     <body>
         <%@ include file="/menu.jsp"  %>
+		<div class="titulo">Human Capital</div><br>
         <jsp:useBean id = "datos" scope= "session" class = "logic.DBHandler" />
-        <div id="table1" >
-            <!-- Titulo de la pagina -->
-            <h1> <center> Informacion detallada de Entrevista </center> </h1>
-            <table style="width:140%" >
+        <div id="table2" >
 
+            <table style="width:70%" align="center" border="0" cellspacing="0" cellpadding="20" >
+			
+				<tr class="tituloCandRenglon"><td>Informacion detallada de Entrevista</td></tr>
+				
                 <%  
                     String sEmpID = request.getParameter("empId");
                     String sCandID = request.getParameter("candId");
@@ -36,20 +38,20 @@
                     Entrevista ent = DBHandler.obtenerEntrevista(sEmpID, sCandID, sFechaID, sFeedbackID);
                     if (ent == null) {
                 %>
-                <tr> Entrevista no encontrada </tr> <br><br>
+                <tr class="candRenglon"> Entrevista no encontrada </tr> <br><br>
 
                 <% } else {%> 
-                <tr> Entrevistador: <%= ent.getEmpEmpleado().getsNombreCompleto() %> </tr> <br><br>
-                <tr> Entrevistado: <%= ent.getCandCandidato().getsNombreCompleto() %> </tr> <br><br>
-                <tr> Fecha: <%= ent.getsFecha() %> </tr> <br><br>
-                <tr> Plataforma: <%= ent.getsPlataforma() %> </tr> <br><br>
-                <tr> Feedback: <%= ent.getsFeedback() %> </tr> <br><br>
+                <tr class="candRenglon"> <td>Entrevistador: <%= ent.getEmpEmpleado().getsNombreCompleto() %> </td> </tr>
+                <tr class="candRenglon"> <td>Entrevistado: <%= ent.getCandCandidato().getsNombreCompleto() %> </td> </tr>
+                <tr class="candRenglon"> <td>Fecha: <%= ent.getsFecha() %> </td> </tr>
+                <tr class="candRenglon"> <td>Plataforma: <%= ent.getsPlataforma() %> </td> </tr>
+                <tr class="candRenglon"> <td>Feedback: <%= ent.getsFeedback() %> </td> </tr>
                 
 
                 <% }%>
-                <form action="/ProyectoJava/entrevistas.jsp">
-                    <input type="submit" value="Regresar">
-                </form>
+                <tr class="candRenglon"><td><form action="/ProyectoJava/entrevistas.jsp">
+					<center><input type="submit" class="myButton" value="Regresar"></center>
+                </form></td></tr>
             </table>
         </div>
     </body>

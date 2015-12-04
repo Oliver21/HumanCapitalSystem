@@ -19,29 +19,39 @@
     <head>
         <title>Empleados</title>
     </head>
-    <body>
-        <%@ include file="/menu.jsp"  %>
+    <body background="oficina2.jpg">
+		
+		<!-- Titulo de la pagina -->
+		<div class="titulo">Registro de Empleados</div><br>
+	
+	    <%@ include file="/menu.jsp"  %>
+	
+		<!-- moved -->
+		<center>
+		 <table class="botonesArriba" width="815px">
+			<tr>
+				<td>
+				<form action="agregarEmpleados.jsp" method="post">
+					<input type="submit" class="myButton" value="Agregar empleados">
+				</form></td>
+				<td><form action="modificarEmpleados.jsp" method="post">
+					<input type="submit" class="myButton" value="Modificar empleados">
+				 </form></td>
+				<td><form action="eliminarEmpleados.jsp" method="post">
+					<input type="submit" class="myButton" value="Eliminar empleados">
+				</form></td>
+			</tr>
+		</table>
+		</center>
+		<br>
+	
         <jsp:useBean id = "datos" scope= "session" class = "logic.DBHandler" />
         <div id="table1" >
-            <!-- Titulo de la pagina -->
-            <h1> <center> Registro de Empleados </center> </h1>
 
             <!-- Formulario en forma de tabla para separar en columnas y renglones -->
-            <table style="width:140%" >
+            <table border="0" cellspacing="0" cellpadding="6" width="765px">
 
-                <form action="agregarEmpleados.jsp" method="post">
-                    <input type="submit" value="Agregar empleados">
-
-                </form>
-                <form action="modificarEmpleados.jsp" method="post">
-                    <input type="submit" value="Modificar empleados">
-                </form>
-                <form action="eliminarEmpleados.jsp" method="post">
-                    <input type="submit" value="Eliminar empleados">
-                </form>
-                <br>
-                <br>
-                <tr>
+                <tr class="tituloCandRenglon">
                     <td> Nombre </td>
                     <td> Email </td>
                     <td> Titulo profesional </td>
@@ -53,7 +63,7 @@
                     ArrayList<Empleado> emps = DBHandler.obtenerEmpleados();
                     for (int i = 0; i < emps.size(); i++) {
                 %>
-                <tr> 
+                <tr class="candRenglon"> 
                     <td> <%= emps.get(i).getsNombreCompleto()%> </td>
                     <td> <%= emps.get(i).getsCorreoElectronico()%> </td>
                     <td> <%= emps.get(i).getsTituloProfesional()%> </td>

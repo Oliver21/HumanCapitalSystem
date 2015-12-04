@@ -20,28 +20,35 @@
         <title>Entrevistas</title>
     </head>
     <body>
+
+        <!-- Titulo de la pagina -->
+        <div class="titulo">Registro de Entrevistas</div><br>
+
         <%@ include file="/menu.jsp"  %>
         <jsp:useBean id = "datos" scope= "session" class = "logic.DBHandler" />
+        <!-- moved -->
+		<center>
+			<table class="botonesArriba" width="815px">
+				<tr>
+					<td>
+						<form action="agregarEntrevistas.jsp" method="post">
+							<input type="submit" class="myButton" value="Agregar entrevistas">
+						</form></td>
+					<td><form action="modificarEntrevistas.jsp" method="post">
+							<input type="submit" class="myButton" value="Modificar entrevistas">
+						</form></td>
+					<td><form action="eliminarEntrevistas.jsp" method="post">
+							<input type="submit" class="myButton" value="Eliminar entrevistas">
+						</form></td>
+				</tr>
+			</table>
+		</center>
+		<br>
+	
         <div id="table1" >
-            <!-- Titulo de la pagina -->
-            <h1> <center> Registro de Entrevistas </center> </h1>
-
             <!-- Formulario en forma de tabla para separar en columnas y renglones -->
-            <table style="width:140%" >
-
-                <form action="agregarEntrevistas.jsp" method="post">
-                    <input type="submit" value="Agregar entrevistas">
-
-                </form>
-                <form action="modificarEntrevistas.jsp" method="post">
-                    <input type="submit" value="Modificar entrevistas">
-                </form>
-                <form action="eliminarEntrevistas.jsp" method="post">
-                    <input type="submit" value="Eliminar entrevistas">
-                </form>
-                <br>
-                <br>
-                <tr>
+            <table border="0" cellspacing="0" cellpadding="6" width="765px">
+                <tr class="tituloCandRenglon">
                     <td> Entrevistador </td>
                     <td> Entrevistado </td>
                     <td> Fecha </td>
@@ -52,7 +59,7 @@
                     ArrayList<Entrevista> ents = DBHandler.obtenerEntrevistas();
                     for (int i = 0; i < ents.size(); i++) {
                 %>
-                <tr> 
+                <tr class="candRenglon"> 
                     <td> <%= ents.get(i).getEmpEmpleado().getsNombreCompleto() %> </td>
                     <td> <%= ents.get(i).getCandCandidato().getsNombreCompleto() %> </td>
                     <td> <%= ents.get(i).getsFecha() %> </td>

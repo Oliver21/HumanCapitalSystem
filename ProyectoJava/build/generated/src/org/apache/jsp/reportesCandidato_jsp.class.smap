@@ -1,0 +1,28 @@
+SMAP
+reportesCandidato_jsp.java
+JSP
+*S JSP
+*F
++ 0 reportesCandidato.jsp
+reportesCandidato.jsp
++ 1 menu.jsp
+menu.jsp
+*L
+5,24:58
+5#1,22:82
+28#0:103
+29:104,10
+30,26:114
+56,3:141
+58:144
+59:145,5
+60:150
+61:151,3
+62,25:154
+87,3:180
+89,2:183
+91,4:185,3
+95,2:197
+97:199,3
+98,5:202
+*E

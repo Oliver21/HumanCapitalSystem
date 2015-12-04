@@ -347,11 +347,10 @@ public class DBHandler {
 
         try {
             Statement st = con.createStatement();
-            // SELECT * FROM `entrevistas` WHERE entrevistador = '1' AND entrevistado = '4' AND fecha = '2015-12-01'
             String sql;
             sql = "SELECT * FROM entrevistas WHERE entrevistador = '";
-            sql += sEmpID + "' AND entrevistado = '" + sCandID + "' AND fecha = '" + sFechaID + "' ";
-            sql += "AND feedback = '" + sFeedback + "'";
+            sql += sEmpID + "' AND entrevistado = '" + sCandID + "' AND fecha = '" + sFechaID + "'"; //";
+            //sql += "AND feedback = '" + sFeedback + "'";
             ResultSet rs = st.executeQuery(sql);
 
             if (rs.next()) {

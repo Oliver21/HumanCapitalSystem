@@ -20,17 +20,18 @@
         <title>Empleados</title>
     </head>
     <body>
-        <%@ include file="/menu.jsp"  %>
         <jsp:useBean id = "datos" scope= "session" class = "logic.DBHandler" />
-        <div id="table1" >
-            <!-- Titulo de la pagina -->
-            <h1> <center> Eliminación de Empleados </center> </h1>
+        
+		<!-- Titulo de la pagina -->
+		<div class="titulo">Eliminación de Empleados</div><br>
+		
+		<%@ include file="/menu.jsp"  %>
+		
+		<div id="table1" >
 
             <!-- Formulario en forma de tabla para separar en columnas y renglones -->
-            <table style="width:140%" >
-                <br>
-                <br>
-                <tr>
+            <table border="0" cellspacing="0" cellpadding="6" width="765px" >
+                <tr class="tituloCandRenglon">
                     <td> Nombre </td>
                     <td> Email </td>
                     <td> Titulo profesional </td>
@@ -42,7 +43,7 @@
                     ArrayList<Empleado> emps = DBHandler.obtenerEmpleados();
                     for (int i = 0; i < emps.size(); i++) {
                 %>
-                <tr> 
+                <tr class="candRenglon"> 
                     <td> <%= emps.get(i).getsNombreCompleto()%> </td>
                     <td> <%= emps.get(i).getsCorreoElectronico()%> </td>
                     <td> <%= emps.get(i).getsTituloProfesional()%> </td>
@@ -57,13 +58,10 @@
                 </tr>
 
                 <%}%>
-            </table>
-            <table style="width:140%">
                 <tr>
                     <td align="center">
-                        <br> <br>
                         <form action="empleados.jsp">
-                            <input type="submit" value="Regresar">
+                            <center><input type="submit" class="myButton" value="Regresar"></center>
                         </form>
                     </td>
                 </tr>

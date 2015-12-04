@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <link rel="stylesheet" type="text/css" href="EstiloAgregarCandidatos.css" />
 <html>
-  <%@ include file="/menu.jsp"  %>
+    <%@ include file="/menu.jsp"  %>
     <head>
         <title>Agregar candidatos</title>
     </head>
@@ -16,8 +16,9 @@
         <jsp:useBean id = "datos" scope= "session" class = "logic.DBHandler" />
         <br><br>
         <center>
+        
         <!-- Formulario en forma de tabla para separar en columnas y renglones -->
-     <div style="position:absolute; left:480px; top:0px;">
+        <div style="position:absolute; left:480px; top:0px;">
         <br><br><br>
         <h3  class="mensajeTop">Datos del Candidato</h3>
         
@@ -60,7 +61,7 @@
             <input type ="submit" class="myButton" value="Regresar" /> 
         </form>
         </div>
-    <img  id="cuadro" src="cuadro.png" width="740px" height ="950px" style="top:-30px; left:350px;"></img>
+        <img  id="cuadro" src="cuadro.png" width="740px" height ="950px" style="top:-30px; left:350px;"></img>
     </center>
 
 </body>

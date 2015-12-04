@@ -18,7 +18,7 @@
 <link rel="stylesheet" type="text/css" href="EstiloGeneral.css" />
 <html>
     <head>
-        <title>Candidatos</title>
+        <title>Reporte Empleados</title>
     </head>
     <body background="oficina2.jpg"">
 
@@ -28,58 +28,49 @@
         <%@ include file="/menu.jsp"  %>
         <jsp:useBean id = "datos" scope= "session" class = "logic.DBHandler" />
         <!-- moved -->
-    <center>
-        <div >
-            <!-- Titulo de la pagina -->
-            <h1 align="right">  Filtros Empleado </h1>
+		<center>
+		<!-- Formulario en forma de tabla para separar en columnas y renglones -->
+		<table class="botonesArriba" cellpadding="15" border="1">
+			<tr class="candRenglon">
+				<td align="right">
+					<form action="reportesFiltroEmpleado.jsp" method="post">
+						Titulo profesional:
+						<input type="text" name="titulo" style="width: 350px;">
+						<br>
+						<br>
+						Universidad:
+						<input type="text" name="universidad" style="width: 350px;">
+						<br>
+						<br>
+						Certificados:
+						<input type="text" name="certificados" style="width: 350px;">
+						<br>
+						<br>
+						Entrevistador:
+						<select name="empleado" style="width:325px; height:18px; font-size:12px; position:relative; left:0px;">
+							<option value="CONST_BLANK"> </option> 
+							<%
+								ArrayList<Empleado> emps = DBHandler.obtenerEmpleados();
+								for (int i = 0; i < emps.size(); i++) {
+							%>
+							<option value="<%= emps.get(i).getsID()%>"> <%= emps.get(i).getsNombreCompleto()%> </option>
 
-            <!-- Formulario en forma de tabla para separar en columnas y renglones -->
-            <table>
-                
-                <form action="reportesFiltroEmpleado.jsp" method="post">
-                    <tr>
-                        <td align="left">
-                            Titulo profesional:
-                            <input type="text" name="titulo" style="width: 500px;">
-                            Universidad:
-                            <input type="text" name="universidad" style="width: 500px;">
-                            <br>
-                            <br>
-                            Certificados:
-                            <input type="text" name="certificados" style="width: 500px;">
-                            Entrevistador:
-                            <select name="empleado" style="width:325px; height:18px; font-size:12px; position:relative; left:0px;">
-                                <option value="CONST_BLANK"> </option> 
-                                <%
-                                    ArrayList<Empleado> emps = DBHandler.obtenerEmpleados();
-                                    for (int i = 0; i < emps.size(); i++) {
-                                %>
-                                <option value="<%= emps.get(i).getsID()%>"> <%= emps.get(i).getsNombreCompleto()%> </option>
-
-                                <% } %>
-                            </select>
-                            <br>
-                            <br>
-
-                            Puesto:
-                            <input type="text" name="puesto" style="width: 500px;">
-                            <br>
-                            <br>
-                            <input type="submit" value="Filtrar">
-
-                        </td>
-
-                    </tr>
-
-                </form>
-
-            </table>
-
-        </div>
+							<% } %>
+						</select>
+						<br>
+						<br>
+                                                Puesto:
+						<input type="text" name="puesto" style="width: 350px;">
+						<br>
+						<br>
+						<input type="submit" value="Filtrar">
+					</form>
+				</td>
+			</tr>
+		</table>
     </center>
     <br>
-
-    <br><br><br><br><br><br><br><br><br>
+	
     <div id="table1" style="top: 225px">			
         <!-- Formulario en forma de tabla para separar en columnas y renglones -->
         <div id="table1" >			

@@ -15,73 +15,72 @@
     </head>
     <body>
         <%@ include file="/menu.jsp"  %>
+		<div class="titulo">Human Capital</div><br>
         <jsp:useBean id = "datos" scope= "session" class = "logic.DBHandler" />
-        <div id="table1">
-            <!-- Titulo de la pagina -->
-            <h1 align="right">  Modificación de candidato </h1>
-
+        <div id="table2">
             <!-- Formulario en forma de tabla para separar en columnas y renglones -->
-            <table style="width:140%" >
-                <%
+            <table style="width:100%" align="center" border="0" cellspacing="0" cellpadding="20">
+                
+				<!-- Titulo de la pagina -->
+				<tr class="tituloCandRenglon"><td>Modificación de candidato</td></tr>
+				
+				<%
                     String sID = request.getParameter("candId");
                     Candidato cand = DBHandler.obtenerCandidato(sID);
                     if (cand != null) {
                 %>
                 <form action="modificarCandidatoList" method="post">
-                    <tr>
+                    <tr class="candRenglon">
                         <input type="text" name="candId" value="<%= cand.getsID() %>" hidden>
                         <td align="right">
                             Nombre completo:
-                            <input type="text" name="nombre" required style="width: 500px;" value="<%= cand.getsNombreCompleto() %>">
+                            <input type="text" name="nombre" required style="width: 350px;" value="<%= cand.getsNombreCompleto() %>">
                             <br>
                             <br>
                             Domicilio:
-                            <input type="text" name="domicilio" required style="width: 500px;" value="<%= cand.getsDomicilio()%>">
+                            <input type="text" name="domicilio" required style="width: 350px;" value="<%= cand.getsDomicilio()%>">
                             <br>
                             <br>
                             Telefono:
-                            <input type="tel" name="telefono" style="width: 500px;" value="<%= cand.getsTelefono()%>">
+                            <input type="tel" name="telefono" style="width: 350px;" value="<%= cand.getsTelefono()%>">
                             <br>
                             <br>
                             Correo Electronico:
-                            <input type="email" name="correo" required style="width: 500px;" value="<%= cand.getsCorreoElectronico()%>">
+                            <input type="email" name="correo" required style="width: 350px;" value="<%= cand.getsCorreoElectronico()%>">
                             <br>
                             <br>
                             Titulo Profesional:
-                            <input type="text" name="titulo" style="width: 500px;" value="<%= cand.getsTituloProfesional() %>">
+                            <input type="text" name="titulo" style="width: 350px;" value="<%= cand.getsTituloProfesional() %>">
                             <br>
                             <br>
                             Universidad:
-                            <input type="text" name="universidad" style="width: 500px;" value="<%= cand.getsUniversidad()%>">
+                            <input type="text" name="universidad" style="width: 350px;" value="<%= cand.getsUniversidad()%>">
                             <br>
                             <br>
                             Certificados:
-                            <input type="text" name="certificado" style="width: 500px;" value="<%= cand.getsCertificados()%>">
+                            <input type="text" name="certificado" style="width: 350px;" value="<%= cand.getsCertificados()%>">
                             <br>
                             <br>
                             Trabajos anteriores:
-                            <input type="text" name="trabajos" multiple style="width: 500px; height: 80px" value="<%= cand.getsTrabajosAnteriores()%>">
+                            <input type="text" name="trabajos" multiple style="width: 350px; height: 80px" value="<%= cand.getsTrabajosAnteriores()%>">
                             <br>
                             <br>
                             Expectativas economicas:
-                            <input type="number" name="economico" style="width: 500px;" min="0" max ="99999999" value="<%= cand.getsExpectativas()%>">
+                            <input type="number" name="economico" style="width: 350px;" min="0" max ="99999999" value="<%= cand.getsExpectativas()%>">
                             <br>
                             <br>
                             <input type="submit" value="Modificar">
-
                         </td>
-
                     </tr>
-
                 </form>
                 <% } else {%>
-                <tr> Candidato no encontrado </tr> <br><br>
+                <tr class="candRenglon"> Candidato no encontrado </tr> <br><br>
                 <% } %>
 
                 <td align="center">
                     <br> <br>
                     <form action="modificarCandidatos.jsp">
-                        <input type="submit" value="Regresar">
+                        <center><input type="submit" class="myButton" value="Regresar"></center>
                     </form>
                 </td>
 

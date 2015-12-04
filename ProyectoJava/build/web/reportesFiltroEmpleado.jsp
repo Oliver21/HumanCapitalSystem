@@ -32,7 +32,6 @@
     <center>
         <div >
             <!-- Titulo de la pagina -->
-            <h1 align="right">  Filtros </h1>
             <%
                 String sTitulo = request.getParameter("titulo");
                 String sUniversidad = request.getParameter("universidad");

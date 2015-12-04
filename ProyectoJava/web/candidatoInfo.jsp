@@ -20,18 +20,20 @@
     </head>
     <body>
         <%@ include file="/menu.jsp"  %>
-        <div class="titulo">Human Capital</div><br>
+		<div class="titulo">Human Capital</div><br>
         <jsp:useBean id = "datos" scope= "session" class = "logic.DBHandler" />
         <div id="table2" >
-            <!-- Titulo de la pagina -->
-            <table style="width:100%" align="center" border="0" cellspacing="0" cellpadding="20">
 
-                <tr class="tituloCandRenglon"><td>Informacion detallada de candidato</td></tr>
-                <%  String sID = request.getParameter("candId");
+            <table style="width:70%" align="center" border="0" cellspacing="0" cellpadding="20">
+
+				<tr class="tituloCandRenglon"><td>Informacion detallada de candidato</td></tr>
+				<%  String sID = request.getParameter("candId");
                     Candidato cand = DBHandler.obtenerCandidato(sID);
                     if (cand == null) { %>
-
-                <% } else {%> 
+			
+				<tr class="candRenglon">  Candidato no encontrado </tr> <br><br>
+				
+				<% } else {%> 
                 <tr class="candRenglon"> <td><br>Nombre: <%= cand.getsNombreCompleto()%></td></tr> 
                 <tr class="candRenglon"> <td> Domicilio: <%= cand.getsDomicilio()%>  </td></tr>
                 <tr class="candRenglon"> <td> Telefono: <%= cand.getsTelefono()%> </td></tr>
@@ -41,21 +43,14 @@
                 <tr class="candRenglon"> <td> Certificados: <%= cand.getsCertificados()%> </td> </tr>
                 <tr class="candRenglon"> <td> Trabajos anteriores: <%= cand.getsTrabajosAnteriores()%> </td> </tr>
                 <tr class="candRenglon"> <td> Expectativas economicas: $<%= cand.getsExpectativas()%> </td> </tr>
-
-                <% }%>
-
-                <tr class="candRenglon"><td><form action="/ProyectoJava/candidatos.jsp">
-                            <center><input type="submit" class="myButton" value="Regresar"></center>
-                        </form></td></tr>
-
+				
+				<% }%>
+				
+				<tr class="candRenglon"><td><form action="/ProyectoJava/candidatos.jsp">
+					<center><input type="submit" class="myButton" value="Regresar"></center>
+                </form></td></tr>
+				
             </table>
         </div>
     </body>
-    <script>
-        <%
-            if (cand == null) {
-        %>
-        alert('Advertencia: Esta intentando acceder a la informacion de un candidato inexistente.');
-        <% }%>
-    </script>
 </html>

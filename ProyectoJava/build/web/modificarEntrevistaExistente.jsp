@@ -11,24 +11,18 @@
 <%@page import="logic.DBHandler"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<link rel="stylesheet" type="text/css" href="EstiloAgregarCandidatos.css" />
+<link rel="stylesheet" type="text/css" href="EstiloGeneral.css" />
 <html>
     <head>
         <title>Agregar entrevistas</title>
     </head>
     <body background="oficina2.jpg" width="100%">
+        <%@ include file="/menu.jsp"  %>
         <jsp:useBean id = "datos" scope= "session" class = "logic.DBHandler" />
         <br><br>
     <center>
-        <!-- Menu -->
-        <a href="candidatos.jsp"><img src="add.png" id="imagen1" class="menu" width="50px" height="50px" title="Agregar candidato"></img></a>
-        <a href="empleados.jsp"><img src="empleado.png" id="imagen2" class="menu" width="50px" height="50px" title="Agregar empleado" ></img></a>
-        <a href="entrevistas.jsp"><img src="handshake2.png" id="imagen3" class="menu" width="50px" height="50px" title="Entrevistas"></img></a>
-        <a href="reportes.jsp"><img src="reporte2.png" id="imagen4" class="menu" width="50px" height="50px" title="Reportes"></img></a>
-
-        <br><br><br>
         <!-- Formulario en forma de tabla para separar en columnas y renglones -->
-        <table style="width:140%" >
+        <table style="width:100%" >
             <%
                 String sEmpID = request.getParameter("empId");
                 String sCandID = request.getParameter("candId");
@@ -88,7 +82,7 @@
                 <tr> Entrevista no encontrada </tr> <br><br>
                 <% } %>
         </table>
-        <img  id="cuadro" src="cuadro.png" width="840px" height ="950px" style="top:-850px;"></img>
+        <img src="cuadro.png" width="640px" height ="550px" style="top: 0px; position: absolute; z-index: -1; left: 220px"></img>
     </center>
 
 </body>
