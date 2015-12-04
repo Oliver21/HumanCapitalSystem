@@ -4,6 +4,8 @@
     Author     : Tony
 --%>
 
+<%@page import="logic.Entrevista"%>
+<%@page import="logic.Empleado"%>
 <%@page import="logic.DBHandler"%>
 <%@page import="java.util.StringTokenizer"%>
 <%@page import="java.io.FileReader"%>
@@ -11,34 +13,22 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="logic.DBHandler"%>
 <%@page import="logic.Candidato"%>
-<%@page import="logic.Entrevista"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <link rel="stylesheet" type="text/css" href="EstiloGeneral.css" />
 <html>
     <head>
-        <title>Entrevistas</title>
+        <title>Empleados</title>
     </head>
     <body>
         <%@ include file="/menu.jsp"  %>
         <jsp:useBean id = "datos" scope= "session" class = "logic.DBHandler" />
         <div id="table1" >
             <!-- Titulo de la pagina -->
-            <h1> <center> Registro de Entrevistas </center> </h1>
+            <h1> <center> Eliminación de Entrevistas </center> </h1>
 
             <!-- Formulario en forma de tabla para separar en columnas y renglones -->
             <table style="width:140%" >
-
-                <form action="agregarEntrevistas.jsp" method="post">
-                    <input type="submit" value="Agregar entrevistas">
-
-                </form>
-                <form action="modificarEntrevistas.jsp" method="post">
-                    <input type="submit" value="Modificar entrevistas">
-                </form>
-                <form action="eliminarEntrevistas.jsp" method="post">
-                    <input type="submit" value="Eliminar entrevistas">
-                </form>
                 <br>
                 <br>
                 <tr>
@@ -46,7 +36,7 @@
                     <td> Entrevistado </td>
                     <td> Fecha </td>
                     <td> Plataforma </td>
-                    <td> Inspeccionar </td>
+                    <td> Eliminar </td>
                 </tr>
                 <%
                     ArrayList<Entrevista> ents = DBHandler.obtenerEntrevistas();
@@ -58,17 +48,27 @@
                     <td> <%= ents.get(i).getsFecha() %> </td>
                     <td> <%= ents.get(i).getsPlataforma() %> </td>
                     <td>
-                        <form action="entrevistaInfo.jsp" method="POST">
+                        <form action="eliminarEntrevistaList" method="POST">
                             <input type="text" name="candId" value="<%= ents.get(i).getCandCandidato().getsID() %>" hidden>
                             <input type="text" name="empId" value="<%= ents.get(i).getEmpEmpleado().getsID() %>" hidden>
                             <input type="text" name="fechaId" value="<%= ents.get(i).getsFecha() %>" hidden>
                             <input type="text" name="feedbackId" value="<%= ents.get(i).getsFeedback()%>" hidden>
-                            <input type="submit" value="Inspeccionar">
+                            <input type="submit" value="Eliminar">
                         </form>
                     </td>
                 </tr>
 
                 <%}%>
+            </table>
+            <table style="width:140%">
+                <tr>
+                    <td align="center">
+                        <br> <br>
+                        <form action="entrevistas.jsp">
+                            <input type="submit" value="Regresar">
+                        </form>
+                    </td>
+                </tr>
             </table>
         </div>
     </body>

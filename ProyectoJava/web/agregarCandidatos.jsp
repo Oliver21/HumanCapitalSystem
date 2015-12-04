@@ -8,7 +8,6 @@
 <!DOCTYPE html>
 <link rel="stylesheet" type="text/css" href="EstiloAgregarCandidatos.css" />
 <html>
-    <%@ include file="/menu.jsp"  %>
     <head>
         <title>Agregar candidatos</title>
     </head>
@@ -16,9 +15,14 @@
         <jsp:useBean id = "datos" scope= "session" class = "logic.DBHandler" />
         <br><br>
         <center>
-        
+        <!-- Menu -->
+        <a href="candidatos.jsp"><img src="add.png" id="imagen1" class="menu" width="50px" height="50px" title="Agregar candidato"></img></a>
+        <a href="empleados.jsp"><img src="empleado.png" id="imagen2" class="menu" width="50px" height="50px" title="Agregar empleado" ></img></a>
+        <a href="entrevistas.jsp"><img src="handshake2.png" id="imagen3" class="menu" width="50px" height="50px" title="Entrevistas"></img></a>
+        <a href="reportes.jsp"><img src="reporte2.png" id="imagen4" class="menu" width="50px" height="50px" title="Reportes"></img></a>
+
         <!-- Formulario en forma de tabla para separar en columnas y renglones -->
-        <div style="position:absolute; left:480px; top:0px;">
+    
         <br><br><br>
         <h3  class="mensajeTop">Datos del Candidato</h3>
         
@@ -60,8 +64,7 @@
         <form action= "candidatos.jsp"> 
             <input type ="submit" class="myButton" value="Regresar" /> 
         </form>
-        </div>
-        <img  id="cuadro" src="cuadro.png" width="740px" height ="950px" style="top:-30px; left:350px;"></img>
+        <img  id="cuadro" src="cuadro.png" width="840px" height ="950px" style="top:-850px;"></img>
     </center>
 
 </body>

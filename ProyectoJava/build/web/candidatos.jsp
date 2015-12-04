@@ -1,4 +1,3 @@
-        
 <%-- 
     Document   : candidatos
     Created on : Oct 29, 2015, 10:38:59 PM
@@ -28,7 +27,7 @@
         <jsp:useBean id = "datos" scope= "session" class = "logic.DBHandler" />
         <!-- moved -->
     <center>
-        <table class="botonesArriba" width="1150px">
+        <table class="botonesArriba" width="815px">
             <tr>
                 <td>
                     <form action="agregarCandidatos.jsp" method="post">
@@ -47,7 +46,7 @@
 
     <div id="table1" >			
         <!-- Formulario en forma de tabla para separar en columnas y renglones -->
-        <table border="0" cellspacing="0" cellpadding="6" width="1000px">
+        <table border="0" cellspacing="0" cellpadding="6" width="765px">
             <tr class="tituloCandRenglon">
                 <td> Nombre </td>
                 <td> Email </td>

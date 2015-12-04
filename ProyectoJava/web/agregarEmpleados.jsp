@@ -10,16 +10,20 @@
 <html>
     <head>
         <title>Agregar empleados</title>
-        <%@ include file="/menu.jsp"  %>
     </head>
     <body background="oficina2.jpg" width="100%">
         <jsp:useBean id = "datos" scope= "session" class = "logic.DBHandler" />
+<!-- Menu -->
+<a href="candidatos.jsp"><img src="add.png" id="imagen1" class="menu" width="50px" height="50px" title="AGREGAR CANDIDATO"></img></a>
+<a href="empleados.jsp"><img src="empleado.png" id="imagen2" class="menu" width="50px" height="50px" title="AGREGAR EMPLEADO" ></img></a>
+<a href="entrevistas.jsp"><img src="handshake2.png" id="imagen3" class="menu" width="50px" height="50px" title="ENTREVISTAS"></img></a>
+<a href="reportes.jsp"><img src="reporte2.png" id="imagen4" class="menu" width="50px" height="50px" title="REPORTES"></img></a>
 
             <!-- Formulario en forma de tabla para separar en columnas y renglones -->
 <center>
-    <div style="position:absolute; left:480px; top:0px;">
 <br><br><br>
 <h3  class="mensajeTop">Datos del Empleado</h3>
+<img  id="cuadro" src="cuadro.png"></img>
 <form action= "agregarEmpleadoList" method="post"> 
 Nombre Completo:
 <input type="text" placeholder="Nombre Completo" name="nombre" required style=" background:transparent; width:300px; height:40px; font-size:18px; 
@@ -67,8 +71,6 @@ Dias de vacaciones:
 <form action= "empleados.jsp"> 
 <input type ="submit" class="myButton" value="Regresar" /> 
 </form>
-</div>
-    <img  id="cuadro" src="cuadro.png" width="740px" height ="1150px" style="top:-30px; left:350px;"></img>
 </center>
     </body>
 </html>

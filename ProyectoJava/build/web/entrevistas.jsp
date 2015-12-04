@@ -62,6 +62,7 @@
                             <input type="text" name="candId" value="<%= ents.get(i).getCandCandidato().getsID() %>" hidden>
                             <input type="text" name="empId" value="<%= ents.get(i).getEmpEmpleado().getsID() %>" hidden>
                             <input type="text" name="fechaId" value="<%= ents.get(i).getsFecha() %>" hidden>
+                            <input type="text" name="feedbackId" value="<%= ents.get(i).getsFeedback()%>" hidden>
                             <input type="submit" value="Inspeccionar">
                         </form>
                     </td>

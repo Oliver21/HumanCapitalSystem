@@ -51,4 +51,11 @@
             </table>
         </div>
     </body>
+    <script>
+        <%
+            if (emp == null) {
+        %>
+        alert('Advertencia: Esta intentando acceder a la informacion de un candidato inexistente.');
+        <% }%>
+    </script>
 </html>

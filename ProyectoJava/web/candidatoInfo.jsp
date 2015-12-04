@@ -20,34 +20,42 @@
     </head>
     <body>
         <%@ include file="/menu.jsp"  %>
+        <div class="titulo">Human Capital</div><br>
         <jsp:useBean id = "datos" scope= "session" class = "logic.DBHandler" />
-        <div id="table1" >
+        <div id="table2" >
             <!-- Titulo de la pagina -->
-            <h1> <center> Informacion detallada de candidato </center> </h1>
-            <table style="width:140%" >
+            <table style="width:100%" align="center" border="0" cellspacing="0" cellpadding="20">
 
+                <tr class="tituloCandRenglon"><td>Informacion detallada de candidato</td></tr>
                 <%  String sID = request.getParameter("candId");
                     Candidato cand = DBHandler.obtenerCandidato(sID);
-                    if (cand == null) {
-                %>
-                <tr> Candidato no encontrado </tr> <br><br>
+                    if (cand == null) { %>
 
                 <% } else {%> 
-                <tr> Nombre: <%= cand.getsNombreCompleto()%> </tr> <br><br>
-                <tr> Domicilio: <%= cand.getsDomicilio()%> </tr><br><br>
-                <tr> Telefono: <%= cand.getsTelefono()%> </tr><br><br>
-                <tr> Correo electronico: <%= cand.getsCorreoElectronico()%> </tr><br><br>
-                <tr> Titulo profesional: <%= cand.getsTituloProfesional()%> </tr><br><br>
-                <tr> Universidad: <%= cand.getsUniversidad()%> </tr><br><br>
-                <tr> Certificados: <%= cand.getsCertificados()%> </tr><br><br>
-                <tr> Trabajos anteriores: <%= cand.getsTrabajosAnteriores()%> </tr><br><br>
-                <tr> Expectativas economicas: $<%= cand.getsExpectativas()%> </tr><br><br>
+                <tr class="candRenglon"> <td><br>Nombre: <%= cand.getsNombreCompleto()%></td></tr> 
+                <tr class="candRenglon"> <td> Domicilio: <%= cand.getsDomicilio()%>  </td></tr>
+                <tr class="candRenglon"> <td> Telefono: <%= cand.getsTelefono()%> </td></tr>
+                <tr class="candRenglon"> <td> Correo electronico: <%= cand.getsCorreoElectronico()%> </td> </tr>
+                <tr class="candRenglon"> <td> Titulo profesional: <%= cand.getsTituloProfesional()%> </td> </tr>
+                <tr class="candRenglon"> <td> Universidad: <%= cand.getsUniversidad()%> </td> </tr>
+                <tr class="candRenglon"> <td> Certificados: <%= cand.getsCertificados()%> </td> </tr>
+                <tr class="candRenglon"> <td> Trabajos anteriores: <%= cand.getsTrabajosAnteriores()%> </td> </tr>
+                <tr class="candRenglon"> <td> Expectativas economicas: $<%= cand.getsExpectativas()%> </td> </tr>
 
                 <% }%>
-                <form action="/ProyectoJava/candidatos.jsp">
-                    <input type="submit" value="Regresar">
-                </form>
+
+                <tr class="candRenglon"><td><form action="/ProyectoJava/candidatos.jsp">
+                            <center><input type="submit" class="myButton" value="Regresar"></center>
+                        </form></td></tr>
+
             </table>
         </div>
     </body>
+    <script>
+        <%
+            if (cand == null) {
+        %>
+        alert('Advertencia: Esta intentando acceder a la informacion de un candidato inexistente.');
+        <% }%>
+    </script>
 </html>

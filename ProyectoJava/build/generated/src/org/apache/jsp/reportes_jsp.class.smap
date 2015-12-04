@@ -1,0 +1,16 @@
+SMAP
+reportes_jsp.java
+JSP
+*S JSP
+*F
++ 0 reportes.jsp
+reportes.jsp
++ 1 menu.jsp
+menu.jsp
+*L
+5,22:56
+5#1,22:78
+26#0:99
+27:100,10
+28,19:110
+*E

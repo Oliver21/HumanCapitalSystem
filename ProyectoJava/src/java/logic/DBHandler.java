@@ -331,6 +331,7 @@ public class DBHandler {
                 ent.setsFecha(rs.getString("fecha"));
                 ent.setsFeedback(rs.getString("feedback"));
 
+                if(cand != null && emp != null)
                 arrEnts.add(ent);
             }
 
@@ -341,7 +342,7 @@ public class DBHandler {
         return arrEnts;
     }
     
-    public static Entrevista obtenerEntrevista(String sEmpID, String sCandID, String sFechaID) {
+    public static Entrevista obtenerEntrevista(String sEmpID, String sCandID, String sFechaID, String sFeedback) {
         Entrevista ent = null;
 
         try {
@@ -349,7 +350,8 @@ public class DBHandler {
             // SELECT * FROM `entrevistas` WHERE entrevistador = '1' AND entrevistado = '4' AND fecha = '2015-12-01'
             String sql;
             sql = "SELECT * FROM entrevistas WHERE entrevistador = '";
-            sql += sEmpID + "' AND entrevistado = '" + sCandID + "' AND fecha = '" + sFechaID + "'";
+            sql += sEmpID + "' AND entrevistado = '" + sCandID + "' AND fecha = '" + sFechaID + "' ";
+            sql += "AND feedback = '" + sFeedback + "'";
             ResultSet rs = st.executeQuery(sql);
 
             if (rs.next()) {
@@ -376,6 +378,35 @@ public class DBHandler {
         return ent;
     }
     
+    public static void insertarEntrevista(Entrevista ent, String sEntrevistador, String sEntrevistado) {
+        try {
+            Statement st = con.createStatement();
+            String sql;
+            sql = "insert into entrevistas (fecha, entrevistador, entrevistado, plataforma, feedback) values('";
+
+            sql += ent.getsFecha() + "', '" + sEntrevistador + "', '" + sEntrevistado + "', '" + ent.getsPlataforma() + "', '"  ;
+            sql += ent.getsFeedback() + "')";
+            st.executeUpdate(sql);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public static void eliminaEntrevista(String sEmpID, String sCandID, String sFecha, String sFeedback) {
+        try {
+            Statement st = con.createStatement();
+            String sql;
+            sql = "DELETE FROM entrevistas WHERE entrevistador = '";
+            sql += sEmpID + "' AND entrevistado = '" + sCandID + "' AND fecha = '";
+            sql += sFecha + "' AND feedback = '" + sFeedback + "'";
+            st.executeUpdate(sql);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public static void registrarSesion(String username, String password) {
         try {
             Statement st = con.createStatement();
@@ -387,6 +418,108 @@ public class DBHandler {
         } catch (SQLException ex) {
             Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public static void modificaEntrevista(Entrevista ent, String sEmpID, String sCandID, String oeID, String ocID, String ofechaID, String ofeedID) {
+        try {
+            Statement st = con.createStatement();
+            String sql;
+            sql = "UPDATE entrevistas SET ";
+            sql += "fecha='" + ent.getsFecha() + "', ";
+            sql += "entrevistador='" + sEmpID + "', ";
+            sql += "entrevistado='" + sCandID + "', ";
+            sql += "plataforma='" + ent.getsPlataforma() + "', ";
+            sql += "feedback='" + ent.getsFeedback() + "' ";
+
+            sql += "WHERE entrevistador = '" + oeID + "' AND ";
+            sql += "entrevistado = '" + ocID + "' AND ";
+            sql += "fecha = '" + ofechaID + "' AND ";
+            sql += "feedback = '" + ofeedID + "'";
+            
+            st.executeUpdate(sql);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public static ArrayList<Entrevista> obtenerFiltroCandidatos(ReporteFiltro rf){
+        ArrayList<Entrevista> arrEntsFilt = new ArrayList<Entrevista>();
+        ArrayList<Entrevista> total = obtenerEntrevistas();
+        
+        for(int i = 0; i < total.size(); i++){
+            Entrevista ent = total.get(i);
+            
+            boolean bTitulo = true;
+            if(!rf.getsTitulo().isEmpty()){
+                bTitulo = (!(!ent.getCandCandidato().getsTituloProfesional().toLowerCase().contains(rf.getsTitulo().toLowerCase())));
+            }
+            
+            boolean bUniversidad = true;
+            if(!rf.getsUniversidad().isEmpty()){
+                bUniversidad = (!(!ent.getCandCandidato().getsUniversidad().toLowerCase().contains(rf.getsUniversidad().toLowerCase())));
+            }
+            
+            boolean bCertificados = true;
+            if(!rf.getsCertificados().isEmpty()){
+                bCertificados = (!(!ent.getCandCandidato().getsCertificados().toLowerCase().contains(rf.getsCertificados().toLowerCase())));
+            }
+            
+            boolean bEntrevistador = true;
+            if(!rf.getsEmpleado().equals("CONST_BLANK")){
+                bEntrevistador = (rf.getsEmpleado().equals(ent.getEmpEmpleado().getsID()));
+            }
+            
+            if(bTitulo && bUniversidad && bCertificados && bEntrevistador){
+                arrEntsFilt.add(ent);
+            }
+            
+        }
+        
+        
+        return arrEntsFilt;
+    }
+    
+    public static ArrayList<Entrevista> obtenerFiltroEmpleados(ReporteFiltro rf){
+        ArrayList<Entrevista> arrEntsFilt = new ArrayList<Entrevista>();
+        ArrayList<Entrevista> total = obtenerEntrevistas();
+        
+        for(int i = 0; i < total.size(); i++){
+            Entrevista ent = total.get(i);
+            
+            boolean bTitulo = true;
+            if(!rf.getsTitulo().isEmpty()){
+                bTitulo = (!(!ent.getEmpEmpleado().getsTituloProfesional().toLowerCase().contains(rf.getsTitulo().toLowerCase())));
+            }
+            
+            boolean bUniversidad = true;
+            if(!rf.getsUniversidad().isEmpty()){
+                bUniversidad = (!(!ent.getEmpEmpleado().getsUniversidad().toLowerCase().contains(rf.getsUniversidad().toLowerCase())));
+            }
+            
+            boolean bCertificados = true;
+            if(!rf.getsCertificados().isEmpty()){
+                bCertificados = (!(!ent.getEmpEmpleado().getsCertificados().toLowerCase().contains(rf.getsCertificados().toLowerCase())));
+            }
+            
+            boolean bEntrevistador = true;
+            if(!rf.getsEmpleado().equals("CONST_BLANK")){
+                bEntrevistador = (rf.getsEmpleado().equals(ent.getEmpEmpleado().getsID()));
+            }
+            
+            boolean bPuesto = true;
+            if(!rf.getsPuesto().isEmpty()){
+                bPuesto = (!(!ent.getEmpEmpleado().getsPuesto().toLowerCase().contains(rf.getsPuesto().toLowerCase())));
+            }
+            
+            if(bTitulo && bUniversidad && bCertificados && bEntrevistador && bPuesto){
+                arrEntsFilt.add(ent);
+            }
+            
+        }
+        
+        
+        return arrEntsFilt;
     }
     
 }

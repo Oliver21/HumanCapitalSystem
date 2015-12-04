@@ -32,7 +32,8 @@
                     String sEmpID = request.getParameter("empId");
                     String sCandID = request.getParameter("candId");
                     String sFechaID = request.getParameter("fechaId");
-                    Entrevista ent = DBHandler.obtenerEntrevista(sEmpID, sCandID, sFechaID);
+                    String sFeedbackID = request.getParameter("feedbackId");
+                    Entrevista ent = DBHandler.obtenerEntrevista(sEmpID, sCandID, sFechaID, sFeedbackID);
                     if (ent == null) {
                 %>
                 <tr> Entrevista no encontrada </tr> <br><br>
@@ -52,4 +53,11 @@
             </table>
         </div>
     </body>
+    <script>
+        <%
+            if (ent == null) {
+        %>
+        alert('Advertencia: Esta intentando acceder a la informacion de una entrevista inexistente.');
+        <% }%>
+    </script>
 </html>

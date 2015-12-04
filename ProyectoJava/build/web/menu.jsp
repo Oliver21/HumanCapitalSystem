@@ -18,7 +18,7 @@
             <a href ="candidatos.jsp">Candidatos</a>
             <a href ="entrevistas.jsp">Entrevistas</a>
             <a href ="empleados.jsp">Empleados</a>
-            <a href ="reportes.jap">Reportes</a>
+            <a href ="reportes.jsp">Reportes</a>
             <a href ="contactanos.jsp">Contactanos</a>
         </menu>
     </body>

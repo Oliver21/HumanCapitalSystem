@@ -4,6 +4,9 @@
     Author     : Tony
 --%>
 
+<%@page import="logic.ReporteFiltro"%>
+<%@page import="logic.Entrevista"%>
+<%@page import="logic.Empleado"%>
 <%@page import="logic.DBHandler"%>
 <%@page import="java.util.StringTokenizer"%>
 <%@page import="java.io.FileReader"%>
@@ -11,48 +14,61 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="logic.DBHandler"%>
 <%@page import="logic.Candidato"%>
-<%@page import="logic.Entrevista"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <link rel="stylesheet" type="text/css" href="EstiloGeneral.css" />
 <html>
     <head>
-        <title>Entrevistas</title>
+        <title>Candidatos</title>
     </head>
-    <body>
+    <body background="oficina2.jpg">
+
+        <!-- Titulo de la pagina -->
+        <div class="titulo">Reporte de Entrevistas</div><br>
+
         <%@ include file="/menu.jsp"  %>
         <jsp:useBean id = "datos" scope= "session" class = "logic.DBHandler" />
-        <div id="table1" >
+        <!-- moved -->
+    <center>
+        <div >
             <!-- Titulo de la pagina -->
-            <h1> <center> Registro de Entrevistas </center> </h1>
-
+            <h1 align="right">  Filtros </h1>
+            <%
+                String sTitulo = request.getParameter("titulo");
+                String sUniversidad = request.getParameter("universidad");
+                String sCertificados = request.getParameter("certificados");
+                String sEmpleado = request.getParameter("empleado");
+                String sPuesto = request.getParameter("puesto");
+                
+                ReporteFiltro rf = new ReporteFiltro(sTitulo, sUniversidad, sCertificados, sEmpleado, sPuesto);
+                ArrayList<Entrevista> ents = DBHandler.obtenerFiltroCandidatos(rf);
+                
+                %>
             <!-- Formulario en forma de tabla para separar en columnas y renglones -->
-            <table style="width:140%" >
+            
 
-                <form action="agregarEntrevistas.jsp" method="post">
-                    <input type="submit" value="Agregar entrevistas">
+        </div>
+    </center>
+    <br>
 
-                </form>
-                <form action="modificarEntrevistas.jsp" method="post">
-                    <input type="submit" value="Modificar entrevistas">
-                </form>
-                <form action="eliminarEntrevistas.jsp" method="post">
-                    <input type="submit" value="Eliminar entrevistas">
-                </form>
-                <br>
-                <br>
-                <tr>
+    <br><br><br><br><br><br><br><br><br>
+    <div id="table1" style="top: 25px">			
+        <!-- Formulario en forma de tabla para separar en columnas y renglones -->
+        <div id="table1" >			
+        <!-- Formulario en forma de tabla para separar en columnas y renglones -->
+        <table border="0" cellspacing="0" cellpadding="6" width="765px">
+            <tr class="tituloCandRenglon">
                     <td> Entrevistador </td>
                     <td> Entrevistado </td>
                     <td> Fecha </td>
                     <td> Plataforma </td>
                     <td> Inspeccionar </td>
-                </tr>
-                <%
-                    ArrayList<Entrevista> ents = DBHandler.obtenerEntrevistas();
-                    for (int i = 0; i < ents.size(); i++) {
-                %>
-                <tr> 
+            </tr>
+            <%
+                
+                for (int i = 0; i < ents.size(); i++) {
+            %>
+            <tr class="candRenglon"> 
                     <td> <%= ents.get(i).getEmpEmpleado().getsNombreCompleto() %> </td>
                     <td> <%= ents.get(i).getCandCandidato().getsNombreCompleto() %> </td>
                     <td> <%= ents.get(i).getsFecha() %> </td>
@@ -68,8 +84,8 @@
                     </td>
                 </tr>
 
-                <%}%>
-            </table>
-        </div>
-    </body>
+            <%}%>
+        </table>
+    </div>
+</body>
 </html>

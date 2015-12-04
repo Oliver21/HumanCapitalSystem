@@ -28,6 +28,20 @@
         <servlet-name>EliminarEmpleadoListServlet</servlet-name>
         <servlet-class>logic.EliminarEmpleadoListServlet</servlet-class>
     </servlet>
+    
+    <servlet>
+        <servlet-name>AgregarEntrevistaListServlet</servlet-name>
+        <servlet-class>logic.AgregarEntrevistaListServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModificarEntrevistaListServlet</servlet-name>
+        <servlet-class>logic.ModificarEntrevistaListServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarEntrevistaListServlet</servlet-name>
+        <servlet-class>logic.EliminarEntrevistaListServlet</servlet-class>
+    </servlet>
+    
     <servlet>
         <servlet-name>ValidateLoginServlet</servlet-name>
         <servlet-class>logic.ValidateLoginServlet</servlet-class>
@@ -61,6 +75,18 @@
     <servlet-mapping>
         <servlet-name>EliminarEmpleadoListServlet</servlet-name>
         <url-pattern>/eliminarEmpleadoList</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AgregarEntrevistaListServlet</servlet-name>
+        <url-pattern>/agregarEntrevistaList</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificarEntrevistaListServlet</servlet-name>
+        <url-pattern>/modificarEntrevistaList</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarEntrevistaListServlet</servlet-name>
+        <url-pattern>/eliminarEntrevistaList</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ValidateLoginServlet</servlet-name>
