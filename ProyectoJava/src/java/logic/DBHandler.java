@@ -238,6 +238,45 @@ public class DBHandler {
         return emp;
     }
     
+    public static void modificaEmpleado(Empleado emp) {
+        try {
+            Statement st = con.createStatement();
+            String sql;
+            sql = "UPDATE empleados SET ";
+            sql += "nombre='" + emp.getsNombreCompleto() + "', ";
+            sql += "domicilio='" + emp.getsDomicilio()+ "', ";
+            sql += "telefono='" + emp.getsTelefono()+ "', ";
+            sql += "email='" + emp.getsCorreoElectronico()+ "', ";
+            sql += "tituloprofesional='" + emp.getsTituloProfesional()+ "', ";
+            sql += "universidad='" + emp.getsUniversidad()+ "', ";
+            sql += "certificados='" + emp.getsCertificados()+ "', ";
+            sql += "trabajosanteriores='" + emp.getsTrabajosAnteriores()+ "', ";
+            sql += "expectativaseconomicas='" + emp.getsExpectativas()+ "' , ";
+            sql += "puesto='" + emp.getsPuesto()+ "' , ";
+            sql += "salario='" + emp.getsSalario()+ "' , ";
+            sql += "diasvacaciones='" + emp.getsDiasVacaciones()+ "' ";
+            sql += "WHERE empleadoid = " + emp.getsID();
+            
+            st.executeUpdate(sql);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public static void eliminaEmpleado(String sId) {
+        try {
+            Statement st = con.createStatement();
+            String sql;
+            sql = "DELETE FROM empleados WHERE empleadoid = '";
+            sql += sId + "'";
+            st.executeUpdate(sql);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public static boolean validarSesion(String usuario, String password){
         boolean bSuccess = false;
         
@@ -266,6 +305,75 @@ public class DBHandler {
         }
         
         return bSuccess;
+    }
+    
+    public static ArrayList<Entrevista> obtenerEntrevistas() {
+        ArrayList<Entrevista> arrEnts = new ArrayList<Entrevista>();
+
+        try {
+            Statement st = con.createStatement();
+            String sql;
+            sql = "SELECT * FROM entrevistas";
+            ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                Entrevista ent = new Entrevista();
+                
+                String sCandidatoID = rs.getString("entrevistado");
+                Candidato cand = obtenerCandidato(sCandidatoID);
+                ent.setCandCandidato(cand);
+                
+                String sEmpleadoID = rs.getString("entrevistador");
+                Empleado emp = obtenerEmpleado(sEmpleadoID);
+                ent.setEmpEmpleado(emp);
+                
+                ent.setsPlataforma(rs.getString("plataforma"));
+                ent.setsFecha(rs.getString("fecha"));
+                ent.setsFeedback(rs.getString("feedback"));
+
+                arrEnts.add(ent);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return arrEnts;
+    }
+    
+    public static Entrevista obtenerEntrevista(String sEmpID, String sCandID, String sFechaID) {
+        Entrevista ent = null;
+
+        try {
+            Statement st = con.createStatement();
+            // SELECT * FROM `entrevistas` WHERE entrevistador = '1' AND entrevistado = '4' AND fecha = '2015-12-01'
+            String sql;
+            sql = "SELECT * FROM entrevistas WHERE entrevistador = '";
+            sql += sEmpID + "' AND entrevistado = '" + sCandID + "' AND fecha = '" + sFechaID + "'";
+            ResultSet rs = st.executeQuery(sql);
+
+            if (rs.next()) {
+                ent = new Entrevista();
+
+                String sCandidatoID = rs.getString("entrevistado");
+                Candidato cand = obtenerCandidato(sCandidatoID);
+                ent.setCandCandidato(cand);
+                
+                String sEmpleadoID = rs.getString("entrevistador");
+                Empleado emp = obtenerEmpleado(sEmpleadoID);
+                ent.setEmpEmpleado(emp);
+                
+                ent.setsFecha(rs.getString("fecha"));
+                ent.setsPlataforma(rs.getString("plataforma"));
+                ent.setsFeedback(rs.getString("feedback"));
+                
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return ent;
     }
     
     public static void registrarSesion(String username, String password) {

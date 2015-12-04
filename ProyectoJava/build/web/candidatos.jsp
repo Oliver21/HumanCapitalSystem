@@ -1,3 +1,4 @@
+        
 <%-- 
     Document   : candidatos
     Created on : Oct 29, 2015, 10:38:59 PM
@@ -18,56 +19,63 @@
     <head>
         <title>Candidatos</title>
     </head>
-    <body>
+    <body background="oficina2.jpg">
+
+        <!-- Titulo de la pagina -->
+        <div class="titulo">Registro de Candidatos</div><br>
+
         <%@ include file="/menu.jsp"  %>
         <jsp:useBean id = "datos" scope= "session" class = "logic.DBHandler" />
-        <div id="table1" >
-            <!-- Titulo de la pagina -->
-            <h1> <center> Registro de Candidatos </center> </h1>
+        <!-- moved -->
+    <center>
+        <table class="botonesArriba" width="1150px">
+            <tr>
+                <td>
+                    <form action="agregarCandidatos.jsp" method="post">
+                        <input type="submit" class="myButton" value="Agregar candidatos">
+                    </form></td>
+                <td><form action="modificarCandidatos.jsp" method="post">
+                        <input type="submit" class="myButton" value="Modificar candidatos">
+                    </form></td>
+                <td><form action="eliminarCandidatos.jsp" method="post">
+                        <input type="submit" class="myButton" value="Eliminar candidatos">
+                    </form></td>
+            </tr>
+        </table>
+    </center>
+    <br>
 
-            <!-- Formulario en forma de tabla para separar en columnas y renglones -->
-            <table style="width:140%" >
+    <div id="table1" >			
+        <!-- Formulario en forma de tabla para separar en columnas y renglones -->
+        <table border="0" cellspacing="0" cellpadding="6" width="1000px">
+            <tr class="tituloCandRenglon">
+                <td> Nombre </td>
+                <td> Email </td>
+                <td> Titulo profesional </td>
+                <td> Universidad </td>
+                <td> Expectativas economicas </td>
+                <td> Inspeccionar </td>
+            </tr>
+            <%
+                ArrayList<Candidato> cands = DBHandler.obtenerCandidatos();
+                for (int i = 0; i < cands.size(); i++) {
+            %>
+            <tr class="candRenglon"> 
+                <td> <%= cands.get(i).getsNombreCompleto()%> </td>
+                <td> <%= cands.get(i).getsCorreoElectronico()%> </td>
+                <td> <%= cands.get(i).getsTituloProfesional()%> </td>
+                <td> <%= cands.get(i).getsUniversidad()%> </td>
+                <td> $<%= cands.get(i).getsExpectativas()%> </td>
+                <td>
+                    <form action="candidatoInfo.jsp" method="POST">
+                        <input type="text" name="candId" value="<%= cands.get(i).getsID()%>" hidden>
+                        <input type="submit" value="Inspeccionar">
+                    </form>
+                </td>
+            </tr>
 
-                <form action="agregarCandidatos.jsp" method="post">
-                    <input type="submit" value="Agregar candidatos">
-
-                </form>
-                <form action="modificarCandidatos.jsp" method="post">
-                    <input type="submit" value="Modificar candidatos">
-                </form>
-                <form action="eliminarCandidatos.jsp" method="post">
-                    <input type="submit" value="Eliminar candidatos">
-                </form>
-                <br>
-                <br>
-                <tr>
-                    <td> Nombre </td>
-                    <td> Email </td>
-                    <td> Titulo profesional </td>
-                    <td> Universidad </td>
-                    <td> Expectativas economicas </td>
-                    <td> Inspeccionar </td>
-                </tr>
-                <%
-                    ArrayList<Candidato> cands = DBHandler.obtenerCandidatos();
-                    for (int i = 0; i < cands.size(); i++) {
-                %>
-                <tr> 
-                    <td> <%= cands.get(i).getsNombreCompleto()%> </td>
-                    <td> <%= cands.get(i).getsCorreoElectronico()%> </td>
-                    <td> <%= cands.get(i).getsTituloProfesional()%> </td>
-                    <td> <%= cands.get(i).getsUniversidad()%> </td>
-                    <td> $<%= cands.get(i).getsExpectativas()%> </td>
-                    <td>
-                        <form action="candidatoInfo.jsp" method="POST">
-                            <input type="text" name="candId" value="<%= cands.get(i).getsID()%>" hidden>
-                            <input type="submit" value="Inspeccionar">
-                        </form>
-                    </td>
-                </tr>
-
-                <%}%>
-            </table>
-        </div>
-    </body>
+            <%}%>
+        </table>
+    </div>
+</body>
 </html>

@@ -11,7 +11,7 @@
 <html>
     <head>
     </head>
-    <body bgcolor=dddddd>
+    <body>
         <!-- Menu superior -->
         <menu>
             <a href ="home.jsp">Perfil</a>

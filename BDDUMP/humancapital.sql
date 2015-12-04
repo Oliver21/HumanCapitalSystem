@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-11-2015 a las 20:48:36
+-- Tiempo de generación: 04-12-2015 a las 01:27:17
 -- Versión del servidor: 10.0.17-MariaDB
 -- Versión de PHP: 5.6.14
 
@@ -75,7 +75,7 @@ CREATE TABLE `empleados` (
 --
 
 INSERT INTO `empleados` (`empleadoid`, `nombre`, `domicilio`, `telefono`, `email`, `tituloprofesional`, `universidad`, `certificados`, `trabajosanteriores`, `expectativaseconomicas`, `puesto`, `salario`, `diasvacaciones`) VALUES
-(1, '123', '321', '123', '321@mail.com', '321', 'dsadsa', 'dasasd', 'asdasdasddas', 2132, 'dsasdsa', 1231, 123123);
+(1, 'Jennifer C. Wagner', '1158 Central Avenue Rochelle Park, NJ 07662', '154-06-6576', 'jennifer@mail.com', 'Computer Science', 'Cambridge', 'IEEE', 'Oracle', 15000, 'Reclutamiento', 21000, 7);
 
 -- --------------------------------------------------------
 
@@ -92,6 +92,32 @@ CREATE TABLE `entrevistas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Volcado de datos para la tabla `entrevistas`
+--
+
+INSERT INTO `entrevistas` (`fecha`, `entrevistador`, `entrevistado`, `plataforma`, `feedback`) VALUES
+('2015-12-01', 1, 4, 'Videollamada (SKYPE)', 'Tiene buena experiencia laboral.');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`username`, `password`) VALUES
+('admin', 'admin'),
+('tony', 'tony');
+
+--
 -- Índices para tablas volcadas
 --
 
@@ -106,6 +132,12 @@ ALTER TABLE `candidatos`
 --
 ALTER TABLE `empleados`
   ADD PRIMARY KEY (`empleadoid`);
+
+--
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas

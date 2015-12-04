@@ -21,6 +21,14 @@
         <servlet-class>logic.AgregarEmpleadoListServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ModificarEmpleadoListServlet</servlet-name>
+        <servlet-class>logic.ModificarEmpleadoListServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarEmpleadoListServlet</servlet-name>
+        <servlet-class>logic.EliminarEmpleadoListServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>ValidateLoginServlet</servlet-name>
         <servlet-class>logic.ValidateLoginServlet</servlet-class>
     </servlet>
@@ -45,6 +53,14 @@
     <servlet-mapping>
         <servlet-name>AgregarEmpleadoListServlet</servlet-name>
         <url-pattern>/agregarEmpleadoList</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificarEmpleadoListServlet</servlet-name>
+        <url-pattern>/modificarEmpleadoList</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarEmpleadoListServlet</servlet-name>
+        <url-pattern>/eliminarEmpleadoList</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ValidateLoginServlet</servlet-name>

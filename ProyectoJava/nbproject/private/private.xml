@@ -3,11 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Tony/Documents/SourceTree/ITESM/DAW/ProyectoJava/web/home.jsp</file>
-            <file>file:/C:/Users/Tony/Documents/SourceTree/ITESM/DAW/ProyectoJava/web/login.jsp</file>
+            <file>file:/C:/Users/Tony/Documents/SourceTree/ITESM/DAW/ProyectoJava/src/java/logic/DBHandler.java</file>
+            <file>file:/C:/Users/Tony/Documents/SourceTree/ITESM/DAW/ProyectoJava/web/modificarEmpleados.jsp</file>
+            <file>file:/C:/Users/Tony/Documents/SourceTree/ITESM/DAW/ProyectoJava/web/entrevistas.jsp</file>
+            <file>file:/C:/Users/Tony/Documents/SourceTree/ITESM/DAW/ProyectoJava/web/eliminarEmpleados.jsp</file>
+            <file>file:/C:/Users/Tony/Documents/SourceTree/ITESM/DAW/ProyectoJava/web/candidatos.jsp</file>
+            <file>file:/C:/Users/Tony/Documents/SourceTree/ITESM/DAW/ProyectoJava/web/entrevistaInfo.jsp</file>
             <file>file:/C:/Users/Tony/Documents/SourceTree/ITESM/DAW/ProyectoJava/web/menu.jsp</file>
-            <file>file:/C:/Users/Tony/Documents/SourceTree/ITESM/DAW/ProyectoJava/web/EstiloAgregarCandidatos.css</file>
-            <file>file:/C:/Users/Tony/Documents/SourceTree/ITESM/DAW/ProyectoJava/web/agregarCandidatos.jsp</file>
+            <file>file:/C:/Users/Tony/Documents/SourceTree/ITESM/DAW/ProyectoJava/src/java/logic/EliminarEmpleadoListServlet.java</file>
+            <file>file:/C:/Users/Tony/Documents/SourceTree/ITESM/DAW/ProyectoJava/src/java/logic/Entrevista.java</file>
         </group>
     </open-files>
 </project-private>
