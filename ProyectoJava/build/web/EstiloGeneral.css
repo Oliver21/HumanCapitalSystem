@@ -33,13 +33,16 @@ menu {
 	left: 2%;
 	padding: 15px;
 	width: 145px;
-	height: 317px;
+	height: 217px;
 	background-color: rgba(54,111,122,0.65);
 	
 	border-radius: 25px;
     border: 2px;
 }
-
+#logout:hover{
+    cursor: pointer;
+    background-color:#ccc;
+}
 body {
 	background-image: url("oficina2.jpg");
     background-repeat: no-repeat;
